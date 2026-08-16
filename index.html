@@ -10,26 +10,27 @@
   <title>Nolwanzi Enterprise • Trusted multi‑sector solutions</title>
   
   <!-- ===== FAVICONS ===== -->
-  <link rel="icon" type="image/png" sizes="32x32" href="LOGO/logo og.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="LOGO/logo og.png">
-  <link rel="icon" type="image/png" href="LOGO/logo og.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="LOGO/logo%20og.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="LOGO/logo%20og.png">
+  <link rel="icon" type="image/png" href="LOGO/logo%20og.png">
   <link rel="apple-touch-icon" sizes="180x180" href="LOGO/apple-touch-icon.png">
   <link rel="shortcut icon" href="LOGO/favicon.ico" type="image/x-icon">
   
-  <!-- ===== PRELOAD CRITICAL IMAGES ===== -->
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop&crop=center" />
-  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center" />
+  <!-- ===== PRELOAD CRITICAL RESOURCES ===== -->
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=800&h=400&fit=crop&crop=center&q=80" />
+  <link rel="preload" as="image" href="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center&q=80" />
   
   <!-- ===== PRELOAD CRITICAL FONTS ===== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   
-  <!-- ===== FONT AWESOME ===== -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <!-- ===== FONT AWESOME (Deferred) ===== -->
+  <link rel="preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" onload="this.onload=null;this.rel='stylesheet'" />
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" /></noscript>
   
-  <!-- ===== EMAILJS SDK ===== -->
-  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <!-- ===== EMAILJS SDK (Deferred) ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer></script>
   
   <style>
     /* ============================================================
@@ -38,7 +39,6 @@
     
     /* ===== DESIGN TOKENS ===== */
     :root {
-      /* Primary Brand Colors */
       --navy: #06294F;
       --navy-dark: #041D38;
       --navy-light: #1A3F6A;
@@ -48,8 +48,6 @@
       --orange-hover: #E76800;
       --orange-light: #FF9A4A;
       --orange-glow: rgba(255, 122, 26, 0.15);
-      
-      /* Neutrals */
       --white: #FFFFFF;
       --off-white: #F8FAFC;
       --gray-50: #F1F4F8;
@@ -62,48 +60,31 @@
       --gray-700: #3A4754;
       --gray-800: #2A3440;
       --gray-900: #1A222E;
-      
-      /* Semantic */
       --text-primary: var(--gray-900);
       --text-secondary: var(--gray-600);
       --text-muted: var(--gray-400);
-      --text-inverse: var(--white);
-      
-      /* Backgrounds */
       --bg-primary: var(--white);
       --bg-secondary: var(--off-white);
       --bg-tertiary: var(--gray-50);
       --bg-dark: var(--navy-dark);
-      
-      /* Borders */
       --border-light: var(--gray-100);
       --border-medium: var(--gray-200);
-      
-      /* Shadows */
       --shadow-xs: 0 1px 2px rgba(6, 41, 79, 0.04);
       --shadow-sm: 0 2px 8px rgba(6, 41, 79, 0.06);
       --shadow-md: 0 8px 30px rgba(6, 41, 79, 0.08);
       --shadow-lg: 0 20px 60px rgba(6, 41, 79, 0.12);
       --shadow-xl: 0 40px 80px rgba(6, 41, 79, 0.16);
       --shadow-glow: 0 8px 40px rgba(255, 122, 26, 0.25);
-      
-      /* Radius */
       --radius-sm: 8px;
       --radius-md: 12px;
       --radius-lg: 20px;
       --radius-xl: 28px;
       --radius-full: 9999px;
-      
-      /* Typography */
       --font-heading: 'Plus Jakarta Sans', 'Poppins', -apple-system, sans-serif;
       --font-body: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-      
-      /* Transitions - Optimized for performance */
       --transition-fast: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
       --transition-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      
-      /* Spacing Scale */
       --space-1: 4px;
       --space-2: 8px;
       --space-3: 12px;
@@ -168,12 +149,8 @@
       text-align: center;
       margin-bottom: var(--space-7);
     }
-    .section-title .section-label {
-      margin-bottom: var(--space-2);
-    }
-    .section-title h2 {
-      margin-bottom: var(--space-3);
-    }
+    .section-title .section-label { margin-bottom: var(--space-2); }
+    .section-title h2 { margin-bottom: var(--space-3); }
     .section-title p {
       color: var(--text-muted);
       max-width: 600px;
@@ -401,16 +378,6 @@
       pointer-events: none;
       z-index: 1;
     }
-    .hero::after {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background-image: 
-        radial-gradient(circle at 25% 50%, rgba(255,255,255,0.02) 0%, transparent 50%),
-        radial-gradient(circle at 75% 50%, rgba(255,255,255,0.02) 0%, transparent 50%);
-      pointer-events: none;
-      z-index: 1;
-    }
     .hero-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -509,7 +476,6 @@
       align-items: center;
       gap: var(--space-2);
     }
-    .hero-info-box .info-label i { font-size: 0.7rem; }
     .usp-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -1303,17 +1269,6 @@
       outline-offset: 2px;
       border-radius: var(--radius-sm);
     }
-
-    /* ===== LAZY LOAD PLACEHOLDER ===== */
-    .lazy-placeholder {
-      background: linear-gradient(135deg, var(--gray-100) 25%, var(--gray-50) 50%, var(--gray-100) 75%);
-      background-size: 200% 200%;
-      animation: shimmer 1.5s ease-in-out infinite;
-    }
-    @keyframes shimmer {
-      0% { background-position: -200% 0; }
-      100% { background-position: 200% 0; }
-    }
   </style>
 </head>
 <body>
@@ -1323,7 +1278,7 @@
   <div class="container nav-flex">
     <a href="#home" class="logo" aria-label="Nolwanzi Enterprise Home">
       <div class="logo-img" id="logoPlaceholder">
-        <img src="LOGO/logo%20OGG.png" alt="Nolwanzi Logo" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+        <img src="LOGO/logo%20OGG.png" alt="Nolwanzi Logo" loading="lazy" decoding="async" width="44" height="44" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <span class="fallback-icon" style="display:none;"><i class="fas fa-building"></i></span>
       </div>
       <span class="logo-text">NOLWANZI <span>•</span> ENTERPRISE</span>
@@ -1378,7 +1333,7 @@
     </div>
     <div class="hero-right">
       <div class="hero-image-slot" id="heroImageSlot">
-        <video autoplay muted loop playsinline preload="auto" aria-label="Nolwanzi Enterprise promotional video">
+        <video autoplay muted loop playsinline preload="metadata" aria-label="Nolwanzi Enterprise promotional video">
           <source src="LOGO/Corporate_commercial_sequence_fo…_202608121747.mp4" type="video/mp4">
           Your browser does not support the video tag.
         </video>
@@ -1473,9 +1428,9 @@
       </a>
     </div>
 
-    <!-- ===== ROTATION CAROUSEL with WORKING LINKS ===== -->
+    <!-- ===== ROTATION CAROUSEL ===== -->
     <div class="rotation-wrapper" id="rotationWrapper">
-      <img id="rotationBgImg" class="rotation-bg-image" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center" alt="Services background" loading="eager" onerror="this.style.display='none';">
+      <img id="rotationBgImg" class="rotation-bg-image" src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center&q=80" alt="Services background" loading="eager" decoding="async" width="800" height="500" onerror="this.style.display='none';">
       <div class="rotation-overlay">
         <div class="rotating-icon" id="rotatingIcon"><i class="fas fa-print" aria-hidden="true"></i></div>
         <h3 id="rotatingTitle">Printing & Publishing</h3>
@@ -1506,74 +1461,66 @@
       <span class="title-accent"></span>
     </div>
     <div class="services-grid">
-      <!-- 1. Printing & Publishing -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card" id="wedding">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop&crop=center" alt="Printing and publishing services" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1563206767-5b18f218e8de?w=600&h=400&fit=crop&crop=center&q=75" alt="Printing and publishing services" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-print" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Printing & Publishing</h3>
         <p>Litho, large format, plotter cutters, embroidery, laser & ink tanks.</p>
         <span class="service-tag">→ Wedding & events</span>
       </a>
-      <!-- 2. Building & Steel -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop&crop=center" alt="Building and steel construction" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&h=400&fit=crop&crop=center&q=75" alt="Building and steel construction" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-hard-hat" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Building & Steel</h3>
         <p>Assorted materials, steel, and qualified personnel for construction.</p>
       </a>
-      <!-- 3. Grocery & Food -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop&crop=center" alt="Grocery and food supply" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=600&h=400&fit=crop&crop=center&q=75" alt="Grocery and food supply" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-apple-alt" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Grocery & Food</h3>
         <p>Toiletries, kitchen & body requirements, fresh vegetables, food supply.</p>
       </a>
-      <!-- 4. Transport & Logistics -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&crop=center" alt="Transport and logistics" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?w=600&h=400&fit=crop&crop=center&q=75" alt="Transport and logistics" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-truck" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Transport & Logistics</h3>
         <p>Reliable transport services for various activities and cargo needs.</p>
       </a>
-      <!-- 5. Waste Management -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop&crop=center" alt="Waste management services" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1532996122724-e3c354a0b15b?w=600&h=400&fit=crop&crop=center&q=75" alt="Waste management services" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-recycle" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Waste Management</h3>
         <p>Garbage collection and sustainable waste handling.</p>
       </a>
-      <!-- 6. Landscaping -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=400&fit=crop&crop=center" alt="Landscaping services" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=600&h=400&fit=crop&crop=center&q=75" alt="Landscaping services" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-leaf" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Landscaping</h3>
         <p>Gardening, clearing, and professional landscaping design.</p>
       </a>
-      <!-- 7. Electrical Services -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop&crop=center" alt="Electrical services" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=600&h=400&fit=crop&crop=center&q=75" alt="Electrical services" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-bolt" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Electrical Services</h3>
         <p>Computer fixes, software installation, socket & wiring fittings.</p>
       </a>
-      <!-- 8. Medical & Mining -->
       <a href="https://ihregvppt5.zite.so" target="_blank" class="service-card">
         <div class="img-placeholder">
-          <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&h=400&fit=crop&crop=center" alt="Medical and mining equipment" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
+          <img src="https://images.unsplash.com/photo-1631549916768-4119b2e5f926?w=600&h=400&fit=crop&crop=center&q=75" alt="Medical and mining equipment" loading="lazy" decoding="async" width="600" height="400" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
           <span class="fallback-icon" style="display:none;"><i class="fas fa-stethoscope" aria-hidden="true"></i> Add image</span>
         </div>
         <h3>Medical & Mining</h3>
@@ -1687,10 +1634,10 @@
   <div class="container">
     <div class="credit-content">
       <span>Built with <span class="heart" aria-hidden="true">❤</span> by</span>
-      <img src="LOGO\ChatGPT_Image_Aug_12,_2026,_202608161618.jpeg" alt="Peakcraft Innovations Logo" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
+      <img src="LOGO\ChatGPT_Image_Aug_12,_2026,_202608161618.jpeg" alt="PeakCraft Innovations Ltd Logo" loading="lazy" decoding="async" width="28" height="28" onerror="this.style.display='none'; this.nextElementSibling.style.display='inline';">
       <span style="display:none;"><i class="fas fa-code" aria-hidden="true"></i> DevTeam</span>
       <span>|</span>
-      <a href="#" target="_blank">Peakcraft Innovations</a>
+      <a href="https://peaklshda1-coder.github.io/Peak-Craft-Innovations/" target="_blank" rel="noopener noreferrer">PeakCraft Innovations Ltd</a>
     </div>
   </div>
 </div>
@@ -1849,7 +1796,7 @@
     });
 
     // ============================================================
-    // ROTATION CAROUSEL – UPDATED with working links
+    // ROTATION CAROUSEL
     // ============================================================
     const categories = [
       { 
@@ -1857,56 +1804,56 @@
         title: 'Printing & Publishing', 
         desc: 'Litho, large format, plotter cutters, embroidery, laser & ink tanks.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-hard-hat', 
         title: 'Building & Steel', 
         desc: 'Assorted materials, steel, and qualified personnel for construction.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1504917595217-d4dc5ebe6122?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-apple-alt', 
         title: 'Grocery & Food Supply', 
         desc: 'Toiletries, kitchen & body requirements, fresh vegetables, food supply.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1552601542-d7e09e6f9d63?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1552601542-d7e09e6f9d63?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-truck', 
         title: 'Transport & Logistics', 
         desc: 'Reliable transport services for activities and cargo needs.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1578574577315-3fbeb0cecd5c?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1578574577315-3fbeb0cecd5c?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-recycle', 
         title: 'Waste Management', 
         desc: 'Garbage collection and sustainable waste handling.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1605600659877-dbcba6cc1d87?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1605600659877-dbcba6cc1d87?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-leaf', 
         title: 'Landscaping & Design', 
         desc: 'Gardening, clearing, and professional landscaping design.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1558904541-ef8433f34f2d?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1558904541-ef8433f34f2d?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-bolt', 
         title: 'Electrical Services', 
         desc: 'Computer fixes, software installation, socket & wiring fittings.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1563770551460-70f0dd7d27b4?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1563770551460-70f0dd7d27b4?w=800&h=500&fit=crop&crop=center&q=80' 
       },
       { 
         icon: 'fa-stethoscope', 
         title: 'Medical & Mining', 
         desc: 'Equipment and accessories for medical and mining sectors.', 
         link: 'https://ihregvppt5.zite.so',
-        img: 'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=800&h=500&fit=crop&crop=center' 
+        img: 'https://images.unsplash.com/photo-1530023367847-a683933f4172?w=800&h=500&fit=crop&crop=center&q=80' 
       }
     ];
 
@@ -1918,7 +1865,6 @@
     const linkEl = document.getElementById('rotatingLink');
     const indicators = document.querySelectorAll('#rotationIndicators span');
 
-    // Preload next image for smoother transitions
     let preloadLink = document.createElement('link');
     preloadLink.rel = 'preload';
     preloadLink.as = 'image';
@@ -1940,7 +1886,6 @@
         bgImg.src = data.img;
         bgImg.alt = data.title;
         bgImg.style.display = 'block';
-        // Preload next image
         const nextIndex = (index + 1) % categories.length;
         preloadLink.href = categories[nextIndex].img;
         document.head.appendChild(preloadLink);
@@ -1970,7 +1915,6 @@
     
     let rotationInterval = setInterval(autoRotate, 5000);
     
-    // Pause on interaction
     const wrapper = document.getElementById('rotationWrapper');
     if (wrapper) {
       wrapper.addEventListener('mouseenter', () => clearInterval(rotationInterval));
@@ -2023,7 +1967,7 @@
     }
 
     // ============================================================
-    // QUOTE & CONTACT FORM HANDLING (Redirect to Zite)
+    // QUOTE & CONTACT FORM HANDLING
     // ============================================================
     const quoteForm = document.getElementById('quoteForm');
     if (quoteForm) {
@@ -2050,7 +1994,6 @@
         entries.forEach(function(entry) {
           if (entry.isIntersecting) {
             const img = entry.target;
-            // Already has src, just ensure it loads
             img.removeAttribute('loading');
             imageObserver.unobserve(img);
           }
